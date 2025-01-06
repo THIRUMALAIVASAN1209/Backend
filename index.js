@@ -3,11 +3,13 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import router from './routes/userRoute.js';
+import cors from 'cors';
 
 const app = express();            //Stores the express function in the variable "app"
 
 //MiddleWare for parsing the json request to body
-app.use(bodyParser.json());         //for using body-parser
+app.use(bodyParser.json()); //for using body-parser
+app.use(cors());        //using cors for sharing data from backend to frontend
 
 dotenv.config();     //dotenv.config() command is used in JavaScript (typically in Node.jsapplications) to load environment variables from a .env file into the process.env object
 const PORT = process.env.PORT || 8000;  // stores the port value given in env || if first port is not available then run in next port
